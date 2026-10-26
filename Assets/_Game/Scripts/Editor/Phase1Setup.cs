@@ -50,6 +50,25 @@ namespace DirtDash.Editor
             Debug.Log("[Dirt Dash] Phase 1 setup completed successfully! TestTrack scene is ready.");
         }
 
+        [MenuItem("DirtDash/Open Boot Scene")]
+        public static void OpenBootScene()
+        {
+            EditorSceneManager.OpenScene("Assets/_Game/Scenes/Boot.unity");
+        }
+
+        [MenuItem("DirtDash/Open Test Track Scene")]
+        public static void OpenTestTrackScene()
+        {
+            EditorSceneManager.OpenScene("Assets/_Game/Scenes/TestTrack.unity");
+        }
+
+        [MenuItem("DirtDash/Force Refresh Asset Database")]
+        public static void ForceRefreshAssetDatabase()
+        {
+            AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+            Debug.Log("[Dirt Dash] AssetDatabase refreshed.");
+        }
+
         private static void EnsurePhysicsMaterials()
         {
             if (!File.Exists(WheelMaterialPath))
