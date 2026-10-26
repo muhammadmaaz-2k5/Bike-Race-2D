@@ -375,20 +375,38 @@ namespace DirtDash.Bike
         {
             if (visualFrontWheel != null && frontWheel != null)
             {
-                visualFrontWheel.position = frontWheel.position;
-                visualFrontWheel.rotation = Quaternion.Euler(0f, 0f, frontWheel.rotation);
+                if (visualBody != null && visualFrontWheel.IsChildOf(visualBody))
+                {
+                    // 3D rigged wheel bone inside FBX rig: roll around local X axle
+                    visualFrontWheel.localRotation = Quaternion.Euler(frontWheel.rotation, 0f, 0f);
+                }
+                else
+                {
+                    // Standalone 2D sprite / transform
+                    visualFrontWheel.position = frontWheel.position;
+                    visualFrontWheel.rotation = Quaternion.Euler(0f, 0f, frontWheel.rotation);
+                }
             }
 
             if (visualBackWheel != null && backWheel != null)
             {
-                visualBackWheel.position = backWheel.position;
-                visualBackWheel.rotation = Quaternion.Euler(0f, 0f, backWheel.rotation);
+                if (visualBody != null && visualBackWheel.IsChildOf(visualBody))
+                {
+                    // 3D rigged wheel bone inside FBX rig: roll around local X axle
+                    visualBackWheel.localRotation = Quaternion.Euler(backWheel.rotation, 0f, 0f);
+                }
+                else
+                {
+                    // Standalone 2D sprite / transform
+                    visualBackWheel.position = backWheel.position;
+                    visualBackWheel.rotation = Quaternion.Euler(0f, 0f, backWheel.rotation);
+                }
             }
 
-            if (visualBody != null && bikeBody != null)
+            if (visualBody != null && visualBody.parent != transform && bikeBody != null)
             {
                 visualBody.position = bikeBody.position;
-                visualBody.rotation = Quaternion.Euler(0f, 0f, bikeBody.rotation);
+                visualBody.rotation = Quaternion.Euler(0f, 90f, bikeBody.rotation);
             }
         }
 

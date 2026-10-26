@@ -31,7 +31,21 @@ namespace DirtDash.Editor
 
         private static void CheckAndRunInitialSetup()
         {
+            bool needsSetup = false;
             if (!File.Exists(BikePrefabPath) || !File.Exists(TestScenePath))
+            {
+                needsSetup = true;
+            }
+            else
+            {
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(BikePrefabPath);
+                if (prefab == null || prefab.transform.Find("BikerVisual") == null)
+                {
+                    needsSetup = true;
+                }
+            }
+
+            if (needsSetup)
             {
                 RunSetup();
             }
@@ -209,15 +223,22 @@ namespace DirtDash.Editor
             // 7. Visual Model Child (Instantiate 3D Biker Prefab)
             GameObject sourceBikerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(SourceBikerPrefabPath);
             Transform visualModelTransform = null;
+            Transform frontWheelVisual = null;
+            Transform backWheelVisual = null;
             if (sourceBikerPrefab != null)
             {
-                GameObject visualInstance = (GameObject)PrefabUtility.InstantiatePrefab(sourceBikerPrefab, root.transform);
+                GameObject visualInstance = Object.Instantiate(sourceBikerPrefab, root.transform);
                 visualInstance.name = "BikerVisual";
                 // Rotate 90 degrees around Y so the bike points forward along the 2D X-axis
                 visualInstance.transform.localPosition = new Vector3(0.08f, -0.32f, 0f);
                 visualInstance.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                 visualInstance.transform.localScale = Vector3.one * 0.95f;
                 visualModelTransform = visualInstance.transform;
+
+                frontWheelVisual = FindChildRecursive(visualInstance.transform, "wheel_1 1");
+                if (frontWheelVisual == null) frontWheelVisual = FindChildRecursive(visualInstance.transform, "wheel_1");
+                backWheelVisual = FindChildRecursive(visualInstance.transform, "wheel_2 1");
+                if (backWheelVisual == null) backWheelVisual = FindChildRecursive(visualInstance.transform, "wheel_2");
             }
 
             // 8. BikeController Component
@@ -236,6 +257,14 @@ namespace DirtDash.Editor
             if (visualModelTransform != null)
             {
                 so.FindProperty("visualBody").objectReferenceValue = visualModelTransform;
+            }
+            if (frontWheelVisual != null)
+            {
+                so.FindProperty("visualFrontWheel").objectReferenceValue = frontWheelVisual;
+            }
+            if (backWheelVisual != null)
+            {
+                so.FindProperty("visualBackWheel").objectReferenceValue = backWheelVisual;
             }
             so.ApplyModifiedProperties();
 
@@ -358,6 +387,17 @@ namespace DirtDash.Editor
             }
             newScenes[scenes.Length] = new EditorBuildSettingsScene(scenePath, true);
             EditorBuildSettings.scenes = newScenes;
+        }
+
+        private static Transform FindChildRecursive(Transform parent, string name)
+        {
+            if (parent.name == name) return parent;
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                var found = FindChildRecursive(parent.GetChild(i), name);
+                if (found != null) return found;
+            }
+            return null;
         }
     }
 }

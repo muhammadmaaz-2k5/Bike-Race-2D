@@ -48,6 +48,18 @@ namespace DirtDash.Cameras
             }
         }
 
+        private void Start()
+        {
+            if (target == null)
+            {
+                var playerGo = GameObject.FindWithTag(DirtDash.Core.GameConstants.TagPlayer);
+                if (playerGo != null)
+                {
+                    SetTarget(playerGo.transform, playerGo.GetComponent<Rigidbody2D>());
+                }
+            }
+        }
+
         private void LateUpdate()
         {
             if (target == null) return;
