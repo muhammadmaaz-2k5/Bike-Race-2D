@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1111111111111111111111111111130, type: 3}
+  m_Name: World3_Level3
+  m_EditorClassIdentifier: 
+  worldId: 3
+  levelIndex: 3
+  levelTitle: Frost Peak
+  themeId: arctic
+  star1Time: 68.8
+  star2Time: 52.6
+  star3Time: 40.5
+  startPosition: {x: 0, y: 1.5}
+  startRotationAngle: 0
+  finishPosition: {x: 117.50, y: 0.00}
+  trackPoints:
+  - {x: -10.00, y: 0.00}
+  - {x: -5.00, y: 0.00}
+  - {x: 0.00, y: 0.00}
+  - {x: 5.00, y: 0.00}
+  - {x: 10.00, y: 0.00}
+  - {x: 15.00, y: 0.00}
+  - {x: 15.00, y: 0.00}
+  - {x: 17.50, y: 0.60}
+  - {x: 20.00, y: 0.00}
+  - {x: 22.50, y: -0.60}
+  - {x: 25.00, y: -0.00}
+  - {x: 27.50, y: 0.60}
+  - {x: 30.00, y: 0.00}
+  - {x: 32.50, y: -0.60}
+  - {x: 35.00, y: -0.00}
+  - {x: 37.50, y: 0.60}
+  - {x: 40.00, y: 0.00}
+  - {x: 42.50, y: -0.60}
+  - {x: 42.50, y: 0.00}
+  - {x: 45.50, y: 0.11}
+  - {x: 48.50, y: 0.31}
+  - {x: 51.50, y: 0.58}
+  - {x: 54.50, y: 0.89}
+  - {x: 57.50, y: 1.24}
+  - {x: 60.50, y: 1.63}
+  - {x: 63.50, y: 2.06}
+  - {x: 66.50, y: 2.51}
+  - {x: 69.50, y: 3.00}
+  - {x: 77.50, y: 0.00}
+  - {x: 81.50, y: 0.00}
+  - {x: 85.50, y: 0.00}
+  - {x: 89.50, y: 0.00}
+  - {x: 93.50, y: 0.00}
+  - {x: 97.50, y: 0.00}
+  - {x: 101.50, y: 0.00}
+  - {x: 105.50, y: 0.00}
+  - {x: 109.50, y: 0.00}
+  - {x: 113.50, y: 0.00}
+  - {x: 117.50, y: 0.00}
+  disjointSegments: []
+  coinPositions:
+  - {x: 15.00, y: 1.20}
+  - {x: 32.50, y: 0.60}
+  - {x: 48.50, y: 1.51}
+  - {x: 69.50, y: 4.20}

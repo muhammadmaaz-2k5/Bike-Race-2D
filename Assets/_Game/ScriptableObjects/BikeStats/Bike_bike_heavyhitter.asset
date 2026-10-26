@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1111111111111111111111111111101, type: 3}
+  m_Name: Bike_bike_heavyhitter
+  m_EditorClassIdentifier: 
+  bikeId: bike_heavyhitter
+  displayName: Heavy Hitter
+  description: High-torque powerhouse built to conquer the steepest mountain climbs with ease.
+  coinPrice: 650
+  isDefaultUnlocked: 0
+  motorSpeed: 2200
+  motorTorque: 60
+  maxSpeed: 32
+  accelerationSmoothing: 8
+  brakeTorque: 40
+  airRotationTorque: 22
+  groundLeanTorque: 15
+  maxAngularVelocity: 850
+  bodyMass: 2
+  wheelMass: 0.45
+  linearDrag: 0.2
+  angularDrag: 0.8
+  suspensionFrequency: 8
+  suspensionDamping: 0.7
+  tireFriction: 1.45
+  tireBounciness: 0.05
